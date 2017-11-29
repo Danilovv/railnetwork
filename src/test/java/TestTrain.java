@@ -1,4 +1,4 @@
-import defaulStation.Init;
+import defaulStation.Initializer;
 import defaulStation.SaintPetersburgUndergroundBlue;
 import model.Train;
 import org.junit.Test;
@@ -18,23 +18,23 @@ public class TestTrain {
 
     @Before
     public void init() {
-        new Init().initDefault();
-        sameTrain = new Train(SaintPetersburgUndergroundBlue.PIONERSKAJA.getStation(), SaintPetersburgUndergroundBlue.CHERNAJA_RECHKA.getStation());
-        sameTrain = new Train(SaintPetersburgUndergroundBlue.PETROGRADSKAJA.getStation(), SaintPetersburgUndergroundBlue.PIONERSKAJA.getStation());
-        oppsositeTrain = new Train(SaintPetersburgUndergroundBlue.CHERNAJA_RECHKA.getStation(), SaintPetersburgUndergroundBlue.PIONERSKAJA.getStation());
+        new Initializer().work();
+        sameTrain = new Train(SaintPetersburgUndergroundBlue.PIONERSKAJA, SaintPetersburgUndergroundBlue.CHERNAJA_RECHKA);
+        sameTrain = new Train(SaintPetersburgUndergroundBlue.PETROGRADSKAJA, SaintPetersburgUndergroundBlue.PIONERSKAJA);
+        oppsositeTrain = new Train(SaintPetersburgUndergroundBlue.CHERNAJA_RECHKA, SaintPetersburgUndergroundBlue.PIONERSKAJA);
 
     }
 
     @Test
     public void testOppositeAccident() {
-        System.out.println(sameTrain.accident(oppsositeTrain));
-        assertTrue(sameTrain.accident(oppsositeTrain));
+        System.out.println(sameTrain.hasAccident(oppsositeTrain));
+        assertTrue(sameTrain.hasAccident(oppsositeTrain));
     }
 
     @Test
     public void testInOneStationAccident() {
-        System.out.println(sameTrain2.accident(sameTrain3));
-        assertTrue(sameTrain2.accident(sameTrain3));
+        System.out.println(sameTrain2.hasAccident(sameTrain3));
+        assertTrue(sameTrain2.hasAccident(sameTrain3));
 
     }
 }

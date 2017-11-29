@@ -1,13 +1,4 @@
-
-import defaulStation.Init;
-import defaulStation.SaintPetersburgUndergroundBlue;
-import defaulStation.SaintPetersburgUndergroundRed;
-import model.RailwayStation;
-import model.Train;
-import service.Navigator;
-import service.SimulateLiveTime;
-
-import java.util.LinkedList;
+import service.LiveTimeSimulation;
 
 
 /**
@@ -16,9 +7,8 @@ import java.util.LinkedList;
  */
 public class Main {
 
-
     public static void main(String[] args) {
-        Thread myThread = new Thread(new SimulateLiveTime());
+        final Thread myThread = new Thread(new LiveTimeSimulation());
         myThread.start();
     }
 

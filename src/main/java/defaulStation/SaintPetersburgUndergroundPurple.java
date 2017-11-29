@@ -4,7 +4,7 @@ package defaulStation;
  * @author Gorchakov Vladimir
  * @version 1.0
  */
-public enum SaintPetersburgUndergroundPurple {
+public enum SaintPetersburgUndergroundPurple implements SaintPetersburgUnderground {
 
     KOMENDANTSHII("Коменданский проспект"),
     STARAJA_DEREVNJA("Старая деревня"),
@@ -12,7 +12,7 @@ public enum SaintPetersburgUndergroundPurple {
     CHKALOVSKAJA("Чкаловская"),
     SPORTIVNAJA("Спортивная"),
     ADMIRALTEISKAJA("Адмиралтейская"),
-    SPASSKAJA(SaintPetersburgUndergroundBlue.SPASSKAJA.getStation()),
+    SPASSKAJA(SaintPetersburgUndergroundBlue.SPASSKAJA.getStationName()),
     PUSHKINSKAJA("Пушкинская"),
     OBVODNII_KANAL("Обводный канал"),
     VOLKOVSKAJA("Волковская"),
@@ -30,7 +30,7 @@ public enum SaintPetersburgUndergroundPurple {
         this.station = station;
     }
 
-    public String getStation() {
+    public String getStationName() {
         return station;
     }
 }

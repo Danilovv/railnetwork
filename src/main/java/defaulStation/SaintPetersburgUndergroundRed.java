@@ -4,7 +4,7 @@ package defaulStation;
  * @author Gorchakov Vladimir
  * @version 1.0
  */
-public enum  SaintPetersburgUndergroundRed {
+public enum  SaintPetersburgUndergroundRed implements SaintPetersburgUnderground {
     DEVJATKINO("Девяткино"),
     GRAJDANSKII_PROSPEKT("Гражданский проспект"),
     AKADEMICHESKAJA("Академическая"),
@@ -13,10 +13,10 @@ public enum  SaintPetersburgUndergroundRed {
     LESNAJA("Лесная"),
     VIBORGSKAJA("Выборгская"),
     LENINA("Ленина"),
-    VOSSTANIJA(SaintPetersburgUndergroundGreen.VOSTANIJA.getStation()),
-    DOSTOEVSKAJA(SaintPetersburgUndergroundOrange.DOSTOEVSKAJA.getStation()),
-    PUSHKINSKAJA(SaintPetersburgUndergroundPurple.PUSHKINSKAJA.getStation()),
-    TEHNOLOJKA(SaintPetersburgUndergroundBlue.TECHNOLOJKA.getStation()),
+    VOSSTANIJA(SaintPetersburgUndergroundGreen.VOSTANIJA.getStationName()),
+    DOSTOEVSKAJA(SaintPetersburgUndergroundOrange.DOSTOEVSKAJA.getStationName()),
+    PUSHKINSKAJA(SaintPetersburgUndergroundPurple.PUSHKINSKAJA.getStationName()),
+    TEHNOLOJKA(SaintPetersburgUndergroundBlue.TECHNOLOJKA.getStationName()),
     BALTIISKAJA("Балтийская"),
     NARVSKAJA("Нарвская"),
     KIROVSKII_ZAVOD("Кировский завод"),
@@ -31,7 +31,7 @@ public enum  SaintPetersburgUndergroundRed {
         this.station = station;
     }
 
-    public String getStation() {
+    public String getStationName() {
         return station;
     }
 }

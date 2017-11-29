@@ -8,22 +8,26 @@ import java.util.Set;
  * @author Gorchakov Vladimir
  * @version 1.0
  */
-public class RailwayNetwork {
-    private static  volatile RailwayNetwork ourInstance = new RailwayNetwork();
+public final class RailwayNetwork {
+    private static volatile RailwayNetwork instance;
+
     private final Map<String, RailwayStation> stationMap = new HashMap<>();
 
     public static RailwayNetwork getInstance() {
-        return ourInstance;
+        if (instance == null)
+            instance = new RailwayNetwork();
+
+        return instance;
     }
 
     private RailwayNetwork() {
     }
 
-    public void createStation(String name) {
+    public void createStation(final String name) {
         stationMap.put(name, new RailwayStation(name));
     }
 
-    public RailwayStation getStation(String name) {
+    public RailwayStation getStation(final String name) {
         return stationMap.get(name);
     }
 
@@ -31,10 +35,10 @@ public class RailwayNetwork {
         return stationMap.keySet();
     }
 
+    public void setConnectionStation(final String firstStation, final String secondStation, final int length) {
+        final RailwayStation railwayStation1 = getStation(firstStation);
+        final RailwayStation railwayStation2 = getStation(secondStation);
 
-    public void setConnectionStation(String station1, String station2, int length) {
-        RailwayStation railwayStation1 = getStation(station1);
-        RailwayStation railwayStation2 = getStation(station2);
         railwayStation1.addConnection(railwayStation2, length);
     }
 

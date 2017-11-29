@@ -4,7 +4,7 @@ package defaulStation;
  * @author Gorchakov Vladimir
  * @version 1.0
  */
-public enum SaintPetersburgUndergroundGreen {
+public enum SaintPetersburgUndergroundGreen implements SaintPetersburgUnderground {
     PRIMORSKAJA("Приморская"),
     VASILEOSTROVSKAJA("Василеостровская"),
     NEVSKI("Гостинный двор"),
@@ -23,7 +23,7 @@ public enum SaintPetersburgUndergroundGreen {
         this.station = station;
     }
 
-    public String getStation() {
+    public String getStationName() {
         return station;
     }
 }

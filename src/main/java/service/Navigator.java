@@ -11,18 +11,23 @@ import java.util.*;
  * @author Gorchakov Vladimir
  * @version 1.0
  */
-public class Navigator {
-
+public final class Navigator {
     private final Integer START_STATION = 0;
     private final Integer NOT_VISITED = Integer.MAX_VALUE / 2;
 
-    RailwayNetwork railwayNetwork = RailwayNetwork.getInstance();
-    Map<String, NavigatorNode> visited;
+    private final RailwayNetwork railwayNetwork = RailwayNetwork.getInstance();
+    private final Map<String, NavigatorNode> visited;
 
-    public LinkedList getRoute(String from, String to) {
+    public Navigator() {
+        visited = new HashMap<>();
+    }
+
+    public final LinkedList<RailwayStation> getRoute(final String from, final String to) {
         RailwayStation start = railwayNetwork.getStation(from);
         RailwayStation finish = railwayNetwork.getStation(to);
+
         makeVisitedMap();
+
         visited.put(from, new NavigatorNode(START_STATION, start));
         makeNavigateMap(start, finish);
 
@@ -31,6 +36,7 @@ public class Navigator {
 
     private void makeNavigateMap(RailwayStation currentStation, RailwayStation finish) {
         Map<RailwayStation, Railway> railwayRelations = currentStation.getRelatoinsRailways();
+
         if (!(currentStation == finish)) {
             for (Map.Entry<RailwayStation, Railway> entry : railwayRelations.entrySet()) {
                 int valueCurrentStation = visited.get(currentStation.getName()).getValue();
@@ -49,11 +55,13 @@ public class Navigator {
     }
 
     private void makeVisitedMap() {
-        visited = new HashMap<>();
-        Iterator stationIterator = railwayNetwork.getStationsName().iterator();
+        final Iterator<String> stationIterator = railwayNetwork.getStationsName().iterator();
+
         while (stationIterator.hasNext()) {
-            String station = (String) stationIterator.next();
-            NavigatorNode navigatorNode = new NavigatorNode(NOT_VISITED, railwayNetwork.getStation(station));
+            final String station = stationIterator.next();
+
+            final NavigatorNode navigatorNode = new NavigatorNode(NOT_VISITED, railwayNetwork.getStation(station));
+
             visited.put(station, navigatorNode);
         }
     }
